@@ -1,0 +1,4 @@
+BCs/fixedCurrentFvPatchScalarField.C
+RfbFoam.C
+
+EXE = $(FOAM_USER_APPBIN)/RfbFoam
