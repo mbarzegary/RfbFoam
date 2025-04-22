@@ -1,3 +1,14 @@
+# Python cache files
+
 __pycache__/
 *.py[cod]
 *.class
+
+# OpenFOAM build files
+**/Make/linux*/
+linux*/*
+lnInclude/
+*.dep
+*.o
+*.so
+*.a
