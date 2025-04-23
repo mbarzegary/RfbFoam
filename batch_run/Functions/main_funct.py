@@ -1,8 +1,8 @@
 import os
 import shutil
-from run_funct import*
-from plot_funct import*
-from control_funct import*
+from .run_funct import*
+from .plot_funct import*
+from .control_funct import*
 
 '''Main functions for the fluid dynamics and electrochemestry simulation process management.'''
 

@@ -3,13 +3,7 @@
 
 
 import sys
-
-# Path to the directory containing functions
-module_path = "/home/moji/Desktop/RfbFoam/runs/Sweep/RfbFoam_PyControl_cluster/Functions"
-if module_path not in sys.path:
-    sys.path.append(module_path)
-
-from main_funct import * # Call the function 
+from Functions.main_funct import * # Call the function 
 
 # OpenFOAM case
 case_directory = "/home/moji/Desktop/RfbFoam/runs/Sweep/FTFF_Model.run/"

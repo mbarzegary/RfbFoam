@@ -2,7 +2,7 @@ import os
 import subprocess
 import threading
 import time
-from plot_funct import plot_residuals
+from .plot_funct import plot_residuals
 
 '''Functions which run the OpenFOAM simulations'''
 
