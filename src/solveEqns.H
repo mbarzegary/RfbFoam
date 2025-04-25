@@ -39,6 +39,7 @@ void solveGoverningEqns()
     volScalarField          & deltaPhi          = *modelParams.deltaPhi;
     volVectorField          & I1                = *modelParams.I1;
     volVectorField          & I2                = *modelParams.I2;
+    volScalarField          & i_loc             = *modelParams.i_loc;
 
     if (!onlyScalar) // If we need to solve the momentum transport equation
     {
@@ -95,9 +96,26 @@ void solveGoverningEqns()
             //deltaPhi = Phi1 -Phi2 - stdPotential;
             deltaPhi = Phi1 -Phi2 - (stdPotential + 1.0/FRT * Foam::log(CO/CR)); //Nerst-Eqn corrected form
 
-            I2 = -1.0*sqrt(Foam::pow(porosity,3))*kappa2*fvc::grad(Phi2);
-            I1 = -1.0*sqrt(Foam::pow(1.-porosity,3))*kappa1*fvc::grad(Phi1);    
+            I2 = -1.0*(kappa2*porosity/tau)*fvc::grad(Phi2);  
+            I1 = -1.0*kappa1*fvc::grad(Phi1);
+            //////// Bruggeman correlation 
+            // Comment out the above two lines and uncomment the two below to revert back to Bruggeman
+            // I2 = -1.0*sqrt(Foam::pow(porosity,3))*kappa2*fvc::grad(Phi2);
+            // I1 = -1.0*sqrt(Foam::pow(1.-porosity,3))*kappa1*fvc::grad(Phi1);    
             
+            i_loc = areaPerVol * i0   / CRef.value() * //division by CRef added
+                  (
+                     CR * Foam::exp(alphaA * FRT * deltaPhi)
+                   - CO * Foam::exp(-1.0*alphaC * FRT * deltaPhi)
+                  )
+                  /
+                  ( 1. + i0/nelec/faradayConstant/CRef
+                       * (
+                             Foam::exp(alphaA * FRT * deltaPhi ) / kmR
+                           + Foam::exp(-1.0*alphaC * FRT * deltaPhi) / kmO
+                         )
+                  ) ;
+
             scalarsRes += spCO.initialResidual() + spCR.initialResidual()
                           + spPhi1.initialResidual() + spPhi2.initialResidual();
 

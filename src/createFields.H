@@ -406,6 +406,30 @@ volScalarField rFiber
     mesh
 );
 
+Info<< "Creating field i_loc\n" << endl;
+volScalarField i_loc
+(
+    IOobject
+    (
+        "i_loc",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    areaPerVol * i0   / CRef.value() * //division by CRef added
+                  (
+                     CR * Foam::exp(alphaA * FRT * deltaPhi)
+                   - CO * Foam::exp(-1.0*alphaC * FRT * deltaPhi)
+                  )
+                  /
+                  ( 1. + i0/nelec/faradayConstant/CRef
+                       * (
+                             Foam::exp(alphaA * FRT * deltaPhi ) / kmR
+                           + Foam::exp(-1.0*alphaC * FRT * deltaPhi) / kmO
+                         )
+                  )
+);
 
 // List cells belonging to inlet, outlet, top and bottom boundaries
 labelList inletCells = mesh.boundary()["inlet"].faceCells();

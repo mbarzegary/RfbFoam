@@ -90,6 +90,7 @@ modelParams =
     &deltaPhi,
     &I1,
     &I2,
+    &i_loc,
     &mesh.V(),
     &runTime,
 };

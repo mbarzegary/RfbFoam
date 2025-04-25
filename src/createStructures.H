@@ -68,6 +68,7 @@ struct dataTransfer
     volScalarField * deltaPhi;
     volVectorField * I1;
     volVectorField * I2;    
+    volScalarField * i_loc;
     const volScalarField::Internal * meshVolumes;
     Foam::Time * runTime;
 }; 
