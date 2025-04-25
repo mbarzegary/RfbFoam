@@ -31,6 +31,13 @@ void printOutput()
 
     dimensionedScalar       & stdPotential      = *modelParams.stdPotential;
 
+    volScalarField          & i_loc             = *modelParams.i_loc;
+    volScalarField          & Phi1              = *modelParams.Phi1;
+    volScalarField          & Phi2              = *modelParams.Phi2;
+    volScalarField          & deltaPhi          = *modelParams.deltaPhi;
+    volVectorField          & I1                = *modelParams.I1;
+    volVectorField          & I2                = *modelParams.I2;
+    const volScalarField::Internal & meshVolumes= *modelParams.meshVolumes;
 
     // Extract the required patch fields
     const fvPatchField<vector>& topI2 =
@@ -77,7 +84,7 @@ void printOutput()
     scalar outFlowCR = gSum(outletCR * phi.boundaryField()[patchID3]); //mol s^-1
 
     // Compute surface-average inlet pressure
-    scalar sumInletPressure = gSum(inletPressure * inletPressure.patch().magSf());
+    scalar sumInletPressure = gSum(inletPressure * inletPressure.patch().magSf()); //m^2 s^-2 kinematik pressure
     scalar totalInletArea = gSum(inletPressure.patch().magSf());
     scalar surfaceAvgInletPressure = rho.value() * sumInletPressure / totalInletArea;
 
@@ -88,10 +95,30 @@ void printOutput()
 
     // Compute power losses and overpotential
     scalar flowLoss = -rho.value()*gSum(inletPressure*inPhi); // J/s
-    scalar electricLoss = gSum((topI2 & topI2.patch().Sf()) * (-1. * topPhi2 - stdPotential.value())); // J/s, Beck's definition
+    scalar electricLoss = gSum((topI2 & topI2.patch().Sf()) * (-1. * topPhi2 - stdPotential.value())); // Remove btmPhi1 because it's zero
     // scalar electricLoss = gSum((topI2 & topI2.patch().Sf()) * (btmPhi1 -1. * topPhi2 - stdPotential.value())); // J/s, Beck's definition
 
     scalar overpotential = electricLoss / totalTopCurrent;  //V
+    /*Post-processing variables*/
+    volVectorField gradPhi1 = fvc::grad(Phi1);
+    volVectorField gradPhi2 = fvc::grad(Phi2);
+    volScalarField::Internal P1 = mag(gradPhi1 & I1); // Electrode power loss
+    volScalarField::Internal P2 = mag(gradPhi2 & I2); // Electrolyte power loss
+    volScalarField::Internal P3 = mag(deltaPhi * i_loc); // Kinetik power loss
+
+    volScalarField::Internal P11 = P1 * meshVolumes; // Temporary variables
+    volScalarField::Internal P22 = P2 * meshVolumes; 
+    volScalarField::Internal P33 = P3 * meshVolumes; 
+    
+    scalar electrodePowerLoss =  gSum(P11);
+    scalar electrolytePowerLoss =  gSum(P22);
+    scalar kineticPower =  gSum(P33);
+    scalar electric_power_loss = kineticPower + electrolytePowerLoss + electrodePowerLoss; // total overpotential
+    
+    scalar electrodeOhmicLoss =  electrodePowerLoss / totalTopCurrent;
+    scalar electrolyteOhmicLoss =  electrolytePowerLoss / totalTopCurrent;
+    scalar kineticLoss =  kineticPower / totalTopCurrent;
+    scalar total_overpotential = kineticLoss + electrolyteOhmicLoss + electrodeOhmicLoss;
 
     // Print the final results of the simulation
 
@@ -116,15 +143,22 @@ void printOutput()
     Info << "Inlet State-of-Charge (%): " << 100.0*inFlowCR/(inFlowCO+inFlowCR) << endl;
     Info << "Outlet State-of-Charge (%): " << 100.0*outFlowCR/(outFlowCO+outFlowCR) << endl;
 
-    //Print the power losses
+    //Print the power losses 
+    Info << "\nElectrode ohmic losses (V): " << electrodeOhmicLoss << endl;
+    Info << "Electrolyte ohmic losses (V): " << electrolyteOhmicLoss << endl;        
+    Info << "Kinetic/Transport losses (V): " << kineticLoss << endl;
+
     Info << "\nFlow Power (J/s): " << flowLoss << endl;
-    Info << "Electric Power (J/s): " << electricLoss << endl;
-    Info << "Total Power Loss (J/s): " << flowLoss + electricLoss << endl;
+    Info << "Electric Power (J/s): " << electric_power_loss << endl;        //electricLoss
+    Info << "Total Power Loss (J/s): " << flowLoss + electric_power_loss << endl;    
 
     //Print total pressure drop
+    Info << "\nInlet peressure (Pa): " << surfaceAvgInletPressure << endl;
+    Info << "\nOutlet peressure (Pa): " << surfaceAvgOutletPressure << endl;
     Info << "\nPressure drop (Pa): " << surfaceAvgInletPressure - surfaceAvgOutletPressure << endl;
 
     //Print "polarization curve" data
     Info << "\ni (mA/cm^2) ,  eta (V) : ";
-    Info <<  averagedTopCurrentDensity / 10.0 << " , " << overpotential << endl;
+    Info <<  averagedTopCurrentDensity / 10.0 << " , " << total_overpotential << endl;
+    // Division by 10 is due to conversion from A/m^2 to mA/cm^2
 }
