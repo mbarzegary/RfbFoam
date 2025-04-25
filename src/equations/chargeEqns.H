@@ -1,6 +1,9 @@
 fvScalarMatrix Phi1Eqn
             (
-                -1.0*fvm::laplacian(sqrt(Foam::pow(1-porosity,3))*kappa1, Phi1)
+                -1.0*fvm::laplacian(kappa1, Phi1)
+                //////// Bruggeman correlation 
+                // Comment out the above line and uncomment the one below to revert back to Bruggeman
+                //  -1.0*fvm::laplacian(sqrt(Foam::pow(1-porosity,3))*kappa1, Phi1)
                 + fvm::Sp(areaPerVol * i0 / CRef.value() * //division by CRef added
                             ( FRT *
                                   (
@@ -74,7 +77,10 @@ fvScalarMatrix Phi1Eqn
             
             fvScalarMatrix Phi2Eqn
             (
-                -1.0*fvm::laplacian(sqrt(Foam::pow(porosity,3))*kappa2, Phi2) 
+                -1.0*fvm::laplacian((kappa2*porosity/tau), Phi2)
+                //////// Bruggeman correlation 
+                // Comment out the above line and uncomment the one below to revert back to Bruggeman
+                // -1.0*fvm::laplacian(sqrt(Foam::pow(porosity,3))*kappa2, Phi2) 
                 + fvm::Sp(areaPerVol * i0 / CRef.value() * //division by CRef added
                             ( FRT *
                                   (

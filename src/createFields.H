@@ -151,6 +151,32 @@ volScalarField invPermeability
     mesh
 );
 
+volScalarField kappa1
+(
+    IOobject
+    (
+        "kappa1",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+
+volScalarField tau
+(
+    IOobject
+    (
+        "tau",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+
 
 volScalarField forchCoeff
 (
@@ -186,7 +212,7 @@ dimensionedScalar rho ("rho", transportProperties);
 dimensionedScalar DCO ("DCO", transportProperties);    
 dimensionedScalar DCR ("DCR", transportProperties);   
 
-dimensionedScalar kappa1 ("kappa1", transportProperties);
+// dimensionedScalar kappa1 ("kappa1", transportProperties);
 dimensionedScalar kappa2 ("kappa2", transportProperties);
 
 dimensionedScalar i0 ("i0", transportProperties);

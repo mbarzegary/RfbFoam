@@ -1,7 +1,10 @@
 fvScalarMatrix COEqn
             (
                 fvm::div(phi, CO)
-              - fvm::laplacian(sqrt(Foam::pow(porosity,3))*DCO, CO)
+              - fvm::laplacian((DCO*porosity/tau), CO)
+              //////// Bruggeman correlation 
+              // Comment out the above line and uncomment the one below to revert back to Bruggeman
+              // - fvm::laplacian(sqrt(Foam::pow(porosity,3))*DCO, CO)
               + fvm::Sp(
                         areaPerVol*Foam::exp(-1.0*alphaC * FRT * deltaPhi )
                         /
@@ -24,7 +27,10 @@ fvScalarMatrix COEqn
             fvScalarMatrix CREqn
             (
                 fvm::div(phi, CR)
-              - fvm::laplacian(sqrt(Foam::pow(porosity,3))*DCR, CR)
+              - fvm::laplacian((DCR*porosity/tau), CR)
+              //////// Bruggeman correlation 
+              // Comment out the above line and uncomment the one below to revert back to Bruggeman
+              // - fvm::laplacian(sqrt(Foam::pow(porosity,3))*DCR, CR)
               + fvm::Sp(
                         areaPerVol*Foam::exp(alphaA * FRT * deltaPhi )
                         /

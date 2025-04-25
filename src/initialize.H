@@ -41,6 +41,7 @@ modelParams =
     &deltaRInterp,
     &mesh.C(),
     &kappa1,    
+    &tau,    
     &kappa2,    
     &DCO,    
     &DCR,

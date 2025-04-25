@@ -18,7 +18,8 @@ struct dataTransfer
     List<double> * gamma_vs_por;
     const double * deltaRInterp;
     const volVectorField * centroids;      
-    dimensionedScalar * kappa1;    
+    volScalarField * kappa1;
+    volScalarField * tau;   
     dimensionedScalar * kappa2;    
     dimensionedScalar * DCO;    
     dimensionedScalar * DCR;

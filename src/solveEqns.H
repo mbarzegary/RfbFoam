@@ -4,7 +4,8 @@ void solveGoverningEqns()
     volScalarField          & forchCoeff        = *modelParams.forchCoeff;
     volScalarField          & porosity          = *modelParams.porosity;
     volScalarField          & areaPerVol        = *modelParams.areaPerVol;       
-    dimensionedScalar       & kappa1            = *modelParams.kappa1;
+    volScalarField          & kappa1            = *modelParams.kappa1;
+    volScalarField          & tau               = *modelParams.tau;
     dimensionedScalar       & kappa2            = *modelParams.kappa2;
     dimensionedScalar       & DCO               = *modelParams.DCO;
     dimensionedScalar       & DCR               = *modelParams.DCR;
