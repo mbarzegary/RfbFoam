@@ -14,7 +14,6 @@ struct dataTransfer modelParams;
 
 void useInterpInData();
 void computeSherwoodCoeff();
-void correctChannelProperties();
 void setSimpleMTCoeff();
 void solveGoverningEqns();
 void printOutput();

@@ -113,9 +113,6 @@ int main(int argc, char *argv[])
         setSimpleMTCoeff();
     }
 
-    // Correct properties in flow field channels
-    correctChannelProperties();
-
     // START of the solution loop
      while (simple.loop())
      {

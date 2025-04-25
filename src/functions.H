@@ -1,23 +1,3 @@
-// Correct the porosity, areaperVol, and invPermeability fields for inlet/outlet channels (i.e. all cells with x-coordinate < 0)
-// Should make this generalized using OF tools like topoSet or setExprFields
-void correctChannelProperties()
-{
-    const cellList &cells = *modelParams.cells;
-    const volVectorField &centroids = *modelParams.centroids;
-
-    forAll(cells, cellI)
-    {
-        if (centroids[cellI][0] < 0.0)
-        {
-            // Write back values into the modelParams struct
-            (*modelParams.porosity)[cellI] = 1.0 - 1.0e-4;
-            (*modelParams.areaPerVol)[cellI] = 0.0;
-            (*modelParams.invPermeability)[cellI] = 0.0;
-            (*modelParams.forchCoeff)[cellI] = 0.0;
-        }
-    }
-}
-
 // Calculate mass transfer coefficient
 void setSimpleMTCoeff()
 {
