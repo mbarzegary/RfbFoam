@@ -384,8 +384,8 @@ volScalarField rFiber
 // List cells belonging to inlet, outlet, top and bottom boundaries
 labelList inletCells = mesh.boundary()["inlet"].faceCells();
 labelList outletCells = mesh.boundary()["outlet"].faceCells();
-labelList topCells = mesh.boundary()["top"].faceCells();
-labelList btmCells = mesh.boundary()["btm"].faceCells();
+labelList topCells = mesh.boundary()["mem"].faceCells();
+labelList btmCells = mesh.boundary()["currColl"].faceCells();
 
 
 

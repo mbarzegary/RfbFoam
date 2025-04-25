@@ -11,9 +11,9 @@ const dimensionedScalar rmax = (unitCellLen - 2.0 * printResLen) / 4.0;
 const double deltaRInterp = radiusInterpIn[1] - radiusInterpIn[0];  
 
 // Assign names to patches  
-const label& patchID = mesh.boundaryMesh().findPatchID("top"); 
+const label& patchID = mesh.boundaryMesh().findPatchID("mem"); 
 const fvPatch& topPatch = mesh.boundary()[patchID];     
-const label& patchID2 = mesh.boundaryMesh().findPatchID("btm"); 
+const label& patchID2 = mesh.boundaryMesh().findPatchID("currColl"); 
 const fvPatch& btmPatch = mesh.boundary()[patchID2]; 
 const label& patchID3 = mesh.boundaryMesh().findPatchID("outlet"); 
 const fvPatch& outletPatch = mesh.boundary()[patchID3];        
