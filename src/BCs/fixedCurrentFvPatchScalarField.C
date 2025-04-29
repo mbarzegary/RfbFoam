@@ -159,8 +159,8 @@ void Foam::fixedCurrentFvPatchScalarField::rmap
 {
     mixedFvPatchScalarField::rmap(ptf, addr);
 
-    const fixedCurrentFvPatchScalarField& tiptf =
-        refCast<const fixedCurrentFvPatchScalarField>(ptf);
+    // const fixedCurrentFvPatchScalarField& tiptf =
+    //     refCast<const fixedCurrentFvPatchScalarField>(ptf);
 }
 
 

@@ -29,7 +29,7 @@ void printOutput()
 
     dimensionedScalar       & rho               = *modelParams.rho;
 
-    dimensionedScalar       & stdPotential      = *modelParams.stdPotential;
+    // dimensionedScalar       & stdPotential      = *modelParams.stdPotential;
 
     volScalarField          & i_loc             = *modelParams.i_loc;
     volScalarField          & Phi1              = *modelParams.Phi1;
@@ -45,10 +45,10 @@ void printOutput()
     const fvPatchField<vector>& btmI1 =
     btmPatch.lookupPatchField<volVectorField, vector>("I1");
 
-    const fvPatchField<scalar>& topPhi2 =
-    topPatch.lookupPatchField<volScalarField, scalar>("Phi2");
-    const fvPatchField<scalar>& btmPhi1 =
-    btmPatch.lookupPatchField<volScalarField, scalar>("Phi1");
+    // const fvPatchField<scalar>& topPhi2 =
+    // topPatch.lookupPatchField<volScalarField, scalar>("Phi2");
+    // const fvPatchField<scalar>& btmPhi1 =
+    // btmPatch.lookupPatchField<volScalarField, scalar>("Phi1");
 
     const fvPatchField<scalar>& inletPressure =
     inletPatch.lookupPatchField<volScalarField, scalar>("p");
@@ -95,10 +95,11 @@ void printOutput()
 
     // Compute power losses and overpotential
     scalar flowLoss = -rho.value()*gSum(inletPressure*inPhi); // J/s
-    scalar electricLoss = gSum((topI2 & topI2.patch().Sf()) * (-1. * topPhi2 - stdPotential.value())); // Remove btmPhi1 because it's zero
+    // scalar electricLoss = gSum((topI2 & topI2.patch().Sf()) * (-1. * topPhi2 - stdPotential.value())); // Remove btmPhi1 because it's zero
     // scalar electricLoss = gSum((topI2 & topI2.patch().Sf()) * (btmPhi1 -1. * topPhi2 - stdPotential.value())); // J/s, Beck's definition
 
-    scalar overpotential = electricLoss / totalTopCurrent;  //V
+    // scalar overpotential = electricLoss / totalTopCurrent;  //V
+    
     /*Post-processing variables*/
     volVectorField gradPhi1 = fvc::grad(Phi1);
     volVectorField gradPhi2 = fvc::grad(Phi2);
