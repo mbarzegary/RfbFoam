@@ -1,15 +1,3 @@
-// Read in the interpolation dataSet from mesoscale simulations (useDataSet determines whether they are going to used)
-List<double> radiusInterpIn(IFstream("constant/radiusInterpIn.txt")());
-List<double> permInterpIn(IFstream("constant/permInterpIn.txt")());    
-List<double> areaInterpIn(IFstream("constant/areaInterpIn.txt")());
-List<double> por(IFstream("constant/por.txt")());
-List<double> gamma_vs_por(IFstream("constant/gamma_vs_por.txt")());
-
-//Definition of rmin and rmax (used in gamma-to-r conversion of useInterpInData()!)
-const dimensionedScalar rmin = printResLen/2.0;
-const dimensionedScalar rmax = (unitCellLen - 2.0 * printResLen) / 4.0;
-const double deltaRInterp = radiusInterpIn[1] - radiusInterpIn[0];  
-
 // Assign names to patches  
 const label& patchID = mesh.boundaryMesh().findPatchID("mem"); 
 const fvPatch& topPatch = mesh.boundary()[patchID];     
@@ -30,15 +18,15 @@ modelParams =
     &gamma,  
     &rFiber,   
     &mesh.cells(),
-    &rmin,
-    &rmax,
+    // &rmin,
+    // &rmax,
     &unitCellLen,
-    &radiusInterpIn,
-    &permInterpIn,    
-    &areaInterpIn,
-    &por,
-    &gamma_vs_por,
-    &deltaRInterp,
+    // &radiusInterpIn,
+    // &permInterpIn,    
+    // &areaInterpIn,
+    // &por,
+    // &gamma_vs_por,
+    // &deltaRInterp,
     &mesh.C(),
     &kappa1,    
     &tau,    

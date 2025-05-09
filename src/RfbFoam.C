@@ -32,19 +32,11 @@ Description
 \*---------------------------------------------------------------------------*/
 
 #include "RfbFoam.H"
-#include "mesoInterpolation.H"
 #include "functions.H"
 #include "solveEqns.H"
 
 int main(int argc, char *argv[])
 {
-    // Enable the use of an argument to the solver that controls if the dataset is going to be used
-    argList::addBoolOption
-    (
-     "useDataSet",
-     "Employs .txt datasets"
-    );
-
     argList::addBoolOption
     (
      "onlyU",
@@ -97,21 +89,9 @@ int main(int argc, char *argv[])
     // Initialize variables and datasets
     #include "initialize.H"
 
-    if (args.found("useDataSet"))
-    {
-      Info << "Found -useDataSet argument \nUsing mesoscale data and Sherwood correlation. " << endl;
-        // Use mesoscale Interpolation data to assign values of fiber radius, permeability, area per volume according to porosity via gamma
-        useInterpInData();
-
-        // Compute the coefficients for the mesoscale Sherwood mass transfer correlation
-        computeSherwoodCoeff();
-    }
-    else
-    {
-      Info << "Using simple MT correlation of the form km = g_km *mag(U)^b_km" << endl;
-        // Set variables "g_km" and "b_km" for a simple mass transfer correlation of the form km = g_km *mag(U)^b_km
-        setSimpleMTCoeff();
-    }
+    Info << "Using simple MT correlation of the form km = g_km *mag(U)^b_km" << endl;
+    // Set variables "g_km" and "b_km" for a simple mass transfer correlation of the form km = g_km *mag(U)^b_km
+    setSimpleMTCoeff();
 
     // START of the solution loop
      while (simple.loop())
