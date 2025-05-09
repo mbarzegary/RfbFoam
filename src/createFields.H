@@ -231,10 +231,6 @@ const dimensionedScalar c4_km ("c4_km", transportProperties);
 const dimensionedScalar g_km ("g_km", transportProperties);
 const dimensionedScalar b_km ("b_km", transportProperties);
 
-dimensionedScalar unitCellLen ("unitCellLen", transportProperties);
-dimensionedScalar printResLen ("printResLen", transportProperties);
-
-
 // Define physical constants
 dimensionedScalar gasConstant
 ("gasConstant", dimensionSet(1, 2, -2, -1, 0, 0, 0), 

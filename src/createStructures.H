@@ -8,15 +8,6 @@ struct dataTransfer
     volScalarField * gamma;    
     volScalarField * rFiber;  
     const cellList *  cells;
-    // const dimensionedScalar * rmin;
-    // const dimensionedScalar * rmax;
-    dimensionedScalar * unitCellLen;
-    // List<double> * radiusInterpIn;
-    // List<double> * permInterpIn;    
-    // List<double> * areaInterpIn;
-    // List<double> * por;
-    // List<double> * gamma_vs_por;
-    // const double * deltaRInterp;
     const volVectorField * centroids;      
     volScalarField * kappa1;
     volScalarField * tau;   
