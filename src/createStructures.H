@@ -5,8 +5,6 @@ struct dataTransfer
     volScalarField * forchCoeff;
     volScalarField * porosity;
     volScalarField * areaPerVol;
-    volScalarField * gamma;    
-    volScalarField * rFiber;  
     const cellList *  cells;
     const volVectorField * centroids;      
     volScalarField * kappa1;

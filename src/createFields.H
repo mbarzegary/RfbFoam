@@ -99,19 +99,6 @@ volScalarField Phi2
 );
 
 // Create the fields for Field Variables that are not solved for (those that stay constant over the simulation):
-volScalarField gamma
-(
-    IOobject
-    (
-       "gamma",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
-);
-  
 volScalarField porosity
 (
     IOobject
@@ -385,21 +372,6 @@ volScalarField gO
         //IOobject::AUTO_WRITE
     ),
     kmR
-);
-
-
-// Define rFiber field 
-volScalarField rFiber
-(
-    IOobject
-    (
-        "rFiber",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
 );
 
 Info<< "Creating field i_loc\n" << endl;

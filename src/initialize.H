@@ -15,8 +15,6 @@ modelParams =
     &forchCoeff,
     &porosity,
     &areaPerVol,    
-    &gamma,  
-    &rFiber,   
     &mesh.cells(),
     &mesh.C(),
     &kappa1,    
