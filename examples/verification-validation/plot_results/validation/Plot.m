@@ -24,7 +24,7 @@ IR = [
 % Model base directory and geometry
 channel_ids = [1, 2, 3]; % Maximum 3 channels assumed; adjust as needed
 base_dir = "../../FTFF_Model.run_470um/";
-velocity_strings = {'-0.00504', '-0.01260'}; % Corresponding velocity values
+velocity_strings = {'-0.00514', '-0.01379'}; % Corresponding velocity values
 flow_rates = {'4.23', '10.58', '21.15'}; % Flow rates
 legend_prefix = {"1 cm s^{-1}","2.5 cm s^{-1}"};
 
@@ -169,4 +169,4 @@ hold on;
     % Save the figure
     set(gcf, 'Units', 'centimeters', 'Position', [10, 7, 12, 9]);
     saveas(gcf, sprintf('validation_IR_compenstated.svg'));
-    saveas(gcf, sprintf('validation_IR_compenstated.png'));
+    % saveas(gcf, sprintf('validation_IR_compenstated.png'));
