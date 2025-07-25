@@ -47,8 +47,8 @@ castellatedMeshControls
         {file "inlet.eMesh"; level 2;} // was 3 
         {file "outlet.eMesh"; level 2;} // was 3
         {file "walls.eMesh"; level 2;} // was 3
-        {file "currColl.eMesh"; level 1;} //was 3
-        {file "mem.eMesh"; level 1;} //was 3
+        {file "currColl.eMesh"; level 2;} //was 3
+        {file "mem.eMesh"; level 2;} //was 3
 
     );
 
@@ -76,8 +76,8 @@ castellatedMeshControls
         } 
 
         walls {level (2 2);} // was 4 4
-        currColl {level (0 0);} // was 4 4
-        mem {level (0 0);} 
+        currColl {level (2 2);} // was 4 4
+        mem {level (2 2);} 
     }  
 
 
