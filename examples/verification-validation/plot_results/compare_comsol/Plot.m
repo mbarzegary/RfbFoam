@@ -6,7 +6,7 @@ fs = 11;
 
 % Define all file names
 fileNames = ["COMSOL.txt", "OF.txt"];
-legendLabels = {"COMSOL Model", "OpenFOAM model"};%, "No mass transfer", "Mass transfer implementation", "Exchange current implementation", "COMSOL model (TCD)"}; % Descriptive labels for the legend
+legendLabels = {"COMSOL Model", "RfbFoam Model"};%, "No mass transfer", "Mass transfer implementation", "Exchange current implementation", "COMSOL model (TCD)"}; % Descriptive labels for the legend
 
 data = cell(length(fileNames), 1);
 
