@@ -1,11 +1,5 @@
 #!/bin/bash
-
-# Start OpenFOAM
-
-#module load OpenFOAM/v2406-foss-2023a 
-#source /sw/rl8/zen/app/OpenFOAM/v2406-foss-2023a/OpenFOAM-v2406/etc/bashrc
-
-source /usr/lib/openfoam/openfoam2406/etc/bashrc
+# RfbFoam fluid dynamics simulation runner
 
 decomposePar | tee log.decomposePar
 
