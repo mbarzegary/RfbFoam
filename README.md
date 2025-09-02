@@ -59,9 +59,51 @@ RfbFoam/
 ## Quick Start
 
 ### Prerequisites
-- OpenFOAM v2206 or later (.com version)
+- OpenFOAM v2406 or later (.com version)
 - GCC compiler
 - Python 3.x (for batch processing tools)
+
+### OpenFOAM Environment Setup
+
+**Important**: RfbFoam requires an active OpenFOAM environment to run. You must set up the OpenFOAM environment before using any of the provided scripts or running simulations.
+
+#### Method 1: User Profile Setup (Recommended)
+Add the following line to your `~/.bashrc` file:
+```bash
+source /usr/lib/openfoam/openfoam2406/etc/bashrc
+```
+Then reload your shell:
+```bash
+source ~/.bashrc
+```
+
+#### Method 2: Module System (HPC/Cluster environments)
+```bash
+module load OpenFOAM/v2406-foss-2023a
+```
+
+#### Method 3: Manual Activation (per session)
+```bash
+source /usr/lib/openfoam/openfoam2406/etc/bashrc
+```
+
+#### Method 4: Alias Setup
+Add to your `~/.bashrc`:
+```bash
+alias of2406='source /usr/lib/openfoam/openfoam2406/etc/bashrc'
+```
+Then use `of2406` before working with OpenFOAM.
+
+**Note**: The exact path may vary depending on your OpenFOAM installation. Common locations include:
+- `/usr/lib/openfoam/openfoam2406/etc/bashrc` (system installation)
+- `/opt/openfoam2406/etc/bashrc` 
+- `~/OpenFOAM/OpenFOAM-v2406/etc/bashrc` (user installation)
+
+Verify your OpenFOAM environment is active by checking:
+```bash
+echo $WM_PROJECT_VERSION
+```
+This should return your OpenFOAM version (e.g., "v2406").
 
 ### Installation
 
