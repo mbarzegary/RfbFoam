@@ -5,6 +5,8 @@
 
 RfbFoam is a specialized computational fluid dynamics (CFD) solver developed for simulating redox flow battery (RFB) systems in OpenFOAM. The solver couples momentum, mass, and charge transport phenomena to model electrochemical processes in porous electrode structures with accurate representation of Butler-Volmer kinetics and mass transfer effects.
 
+![RfbFoam banner](assets/banner.jpg)
+
 ## Overview
 
 This solver addresses the complex multiphysics nature of redox flow batteries by simultaneously solving:
@@ -96,7 +98,7 @@ Then use `of2406` before working with OpenFOAM.
 
 **Note**: The exact path may vary depending on your OpenFOAM installation. Common locations include:
 - `/usr/lib/openfoam/openfoam2406/etc/bashrc` (system installation)
-- `/opt/openfoam2406/etc/bashrc` 
+- `/opt/openfoam2406/etc/bashrc`
 - `~/OpenFOAM/OpenFOAM-v2406/etc/bashrc` (user installation)
 
 Verify your OpenFOAM environment is active by checking:
@@ -178,4 +180,3 @@ If you use RfbFoam in your research, please cite:
 For questions, bug reports, or contributions:
 - Create an issue on GitHub
 - Contact: [maintainer email] -->
-
