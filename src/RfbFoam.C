@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2011-2016 OpenFOAM Foundation
+    \\  /    A nd           | Copyright held by the original author
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -25,7 +25,7 @@ Application
     RfbFoam
 
 Description
-    Solves the steady transport equation of meomentum, mass and charge for the 
+    Solves the steady transport equation of momentum, mass and charge for the
     symmetric cell (half cell) setup of a redox flow battery (RFB).
 
 
@@ -49,15 +49,15 @@ int main(int argc, char *argv[])
      "Solves the charge and mass transport only"
     );
 
-    Foam::argList args(argc, argv); 
+    Foam::argList args(argc, argv);
     onlyU = args.found("onlyU");
     onlyScalar = args.found("onlyScalar");
 
-    // Check for fatal errors     
+    // Check for fatal errors
     if (!args.checkRootCase())
     {
         Foam::FatalError.exit();
-    } 
+    }
 
     Info << "Create time\n" << endl;
     Foam::Time runTime(Foam::Time::controlDictName, args);
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     // Print the time from which simulation commences
     Info << "Create mesh for time = " << runTime.timeName() << nl << endl;
 
-    // Create the mesh 
+    // Create the mesh
     Foam::fvMesh mesh
     (
         Foam::IOobject
@@ -76,12 +76,12 @@ int main(int argc, char *argv[])
             Foam::IOobject::MUST_READ
         )
     );
-    
+
     simpleControl simple(mesh);
 
     // Read in the fields from the createFields.H file
     #include "createFields.H"
-    
+
     fv::options& fvOptions(fv::options::New(mesh));
 
     turbulence->validate();
@@ -97,23 +97,23 @@ int main(int argc, char *argv[])
      while (simple.loop())
      {
         // Print time at which simulation starts
-        Info << nl << "Time = " << runTime.timeName() << nl << endl;                        
-      
-        // Solve the governing equations       
-        solveGoverningEqns();                                         
+        Info << nl << "Time = " << runTime.timeName() << nl << endl;
 
-        // Write selected field variables to the corresponding time folder    
-        runTime.write();  
-        
+        // Solve the governing equations
+        solveGoverningEqns();
+
+        // Write selected field variables to the corresponding time folder
+        runTime.write();
+
         // Print the final results of the simulation
         printOutput();
 
         Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
              << "  ClockTime = " << runTime.elapsedClockTime() << " s"
              << nl << endl;
-                    
+
       }
-    
+
     Info << "End" << nl << endl;
 
     return 0;
