@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2016 OpenFOAM Foundation
+    \\  /    A nd           | Copyright held by the original author
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -70,7 +70,7 @@ fixedCurrentFvPatchScalarField
     //valueFraction() = 0.0;
 
     //refValue() = scalarField("value", dict, p.size());
-        
+
     //fvPatchScalarField::operator=(patchInternalField());
 
     /*
@@ -88,19 +88,19 @@ fixedCurrentFvPatchScalarField
     */
 
     //evaluate();
-    
+
     //evaluate();
 
-         
 
-    
+
+
     //Initialise with the value entry if evaluation is not possible
     fvPatchScalarField::operator=
     (
         scalarField("value", dict, p.size())
     );
     this->refValue() = *this;
-    
+
 }
 
 
@@ -173,10 +173,10 @@ void Foam::fixedCurrentFvPatchScalarField::updateCoeffs()
 
     const fvPatchField& Phi2 =
         patch().lookupPatchField<volScalarField, scalar>("Phi2");
-   
+
     const fvPatchField& porosity =
         patch().lookupPatchField<volScalarField, scalar>("porosity");
-   
+
     // Need to lookup the diffusivity... in field form.
     // Extract the dictionary from the database
     const dictionary& transportProperties = db().lookupObject<IOdictionary>
@@ -186,17 +186,17 @@ void Foam::fixedCurrentFvPatchScalarField::updateCoeffs()
     const dimensionedScalar kappa2(transportProperties.lookup("kappa2"));
 
     scalarField kappa2_field(Phi2.size(),kappa2.value());
-    
+
     kappa2_field = kappa2_field*sqrt(pow(porosity,3));
     //scalarField W = vp_n/DC1_field/this->patch().deltaCoeffs();
 
 
 
-    refGrad() = TT_ / kappa2_field ;   
+    refGrad() = TT_ / kappa2_field ;
     refValue() = 0.0;
     valueFraction() = 0.0;
 
-    
+
     mixedFvPatchScalarField::updateCoeffs();
 }
 

@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2016 OpenFOAM Foundation
+    \\  /    A nd           | Copyright held by the original author
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -28,14 +28,14 @@ Group
     grpGenericBoundaryConditions
 
 Description
-    This boundary condition provides an external convection BC for Laplaces 
+    This boundary condition provides an external convection BC for Laplaces
     equation assuming NO SOURCE. The reason we require NO SOURCE is that this
     implementation is still incomplete. The conductivity should be specified in
-    the transportProperties dictionary and not in the boundary condition. 
-    
-    However, if we assume NO SOURCE, then the conductivity appears only in the 
+    the transportProperties dictionary and not in the boundary condition.
+
+    However, if we assume NO SOURCE, then the conductivity appears only in the
     BC. That is what is implemented here.
-    
+
     Calculated as:
 
         \f[
