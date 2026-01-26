@@ -6,16 +6,16 @@ import sys
 from Functions.main_funct import * # Call the function 
 
 # OpenFOAM case
-case_directory = "/home/moji/Desktop/RfbFoam/runs/Sweep/FTFF_Model.run/"
+case_directory = "../examples/verification-validation/FTFF_Model.run_470um/"
 
 
 # *********************************************************   PARAMETERS SWEEP DEFINITIONS   *********************************************************************
 
 
-potentials = [-0.77, -0.8, -0.9, -1, -1.1, -1.2, -1.3, -1.4]#, -0.9, -0.95, -1, -1.05, -1.1, -1.15, -1.2, -1.25, -1.3, -1.35, -1.4]
-velocity = [(0,-0.0246703,0), (0,-0.004934,0), (0,-0.012335,0)] #(0,-0.012335,0), (0,-0.0246703,0)
+potentials = [-0.77, -0.8, -0.85, -0.9, -0.95, -1, -1.05, -1.1, -1.15, -1.2]
+velocity = [(0, 0,-0.005141), (0, 0, -0.0137852)] #, (0, 0, -0.0275705)]
 
-results_folder_name = 1   # Set the component of velocity to use as name of the folder where the results will be saved   ---->  (0 1 2)
+results_folder_name = 2   # Set the component of velocity to use as name of the folder where the results will be saved   ---->  (0 1 2)
 
 # OPTIONS
 
@@ -24,8 +24,8 @@ run_electrochemistry = True
 
 continuation_sweep = True
 
-plot_residual = True
-save_residual_plot = True
+plot_residual = False
+save_residual_plot = False
 
 #Relative only for electrochemistry simulation
 
@@ -33,10 +33,13 @@ plot_result = True
 save_results_plot = True
 
 # To maintain the field results
-save_results = False
+save_results = True
 
 
 # **********************************************************   PARAMETRIC SWEEP SIMULATIONS   ******************************************************************
+
+# Convert to absolute path if relative
+case_directory = os.path.abspath(case_directory)
 
 
 # Clean up old results
