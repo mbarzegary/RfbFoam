@@ -121,6 +121,12 @@ This should return your OpenFOAM version (e.g., "v2406").
    wmake
    ```
 
+   Or alternatively using the build script in the repository root:
+
+   ```bash
+   ./Allwmake
+   ```
+
 3. **Verify installation**:
    ```bash
    RfbFoam -help
@@ -132,16 +138,12 @@ This should return your OpenFOAM version (e.g., "v2406").
    ```bash
    cd examples/cases/FTFF_Model/
    ```
-
-2. **Prepare the mesh**:
-   ```bash
-   ./Run_Prepare_Only.sh
-   ```
-
-3. **Run the simulation**:
+2. **Prepare the mesh and run the simulation**:
    ```bash
    ./Run_All.sh
    ```
+
+Alternatively, you can use `Allrun` and `Allclean` scripts in cases directories to run and clean the simulations.
 
 ## Solver Options
 
