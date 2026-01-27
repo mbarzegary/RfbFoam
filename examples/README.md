@@ -17,15 +17,6 @@ Flow-Through Flow Field (FTFF) design. The electrolyte enters from one face of t
 
 Interdigitated Flow Field (IDFF) design. The electrolyte is forced through the porous electrode between alternating inlet and outlet channels, creating a predominantly through-plane flow pattern. Uses the same meshing approach and solver configuration as the FTFF case with a different channel geometry.
 
-## Verification and Validation
-
-### verification-validation/FTFF_Model.run_470um
-
-A validation study of the FTFF case with a thickness of 470 µm. Results from this case are compared against COMSOL simulations and experimental data. The comparison plots are located in:
-
-- `verification-validation/plot_results/compare_comsol/` — overpotential comparison with COMSOL
-- `verification-validation/plot_results/validation/` — polarization curve validation against experimental measurements
-
 ## Running a Case
 
 Each case provides an `Allrun` script for execution and an `Allclean` script for resetting:
@@ -54,6 +45,53 @@ A typical workflow for decoupled simulations is to run the flow field first, the
 ./Run_U.sh
 ./Run_Scalar.sh
 ```
+
+## Verification and Validation
+
+### verification-validation/FTFF_Model.run_470um
+
+A validation study of the FTFF case with a thickness of 470 µm. Results from this case are compared against COMSOL simulations and experimental data. The comparison plots are located in:
+
+- `verification-validation/plot_results/compare_comsol/` — overpotential comparison with COMSOL
+- `verification-validation/plot_results/validation/` — polarization curve validation against experimental measurements
+
+### Running the Validation Study
+
+The validation workflow consists of three steps: mesh preparation, parametric batch simulation, and plotting.
+
+**1. Prepare the mesh and initialize fields**
+
+```bash
+cd examples/verification-validation/FTFF_Model.run_470um
+./Run_Prepare_Only.sh
+```
+
+This generates the mesh (`blockMesh`, `snappyHexMesh`) and initializes the material property fields (`setExprFields`).
+
+**2. Run the parametric sweep**
+
+From the repository root, launch the batch controller:
+
+```bash
+cd batch_run
+python MainControl.py
+```
+
+The script sweeps 10 applied potentials at two inlet velocities, producing two polarization curves. All sweep parameters and flags are pre-configured in `MainControl.py` but can be customized (see `batch_run/README.md` for details).
+
+**3. Plot the results**
+
+Once all simulations have completed, generate the comparison plots using MATLAB:
+
+```bash
+cd examples/verification-validation/plot_results/compare_comsol
+matlab -batch "Plot"    # Overpotential comparison with COMSOL
+
+cd ../validation
+matlab -batch "Plot"    # Polarization curve validation against experimental data
+```
+
+The scripts produce SVG figures saved in their respective directories.
 
 ## Case Structure
 
