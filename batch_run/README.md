@@ -1,14 +1,22 @@
 # RfbFoam Python Control
 
 This script allows for parametric sweeps of fluid dynamics and electrochemistry simulations using the RfbFoam solver.
-Configuration in MainControl.py
+
+## Configuration in MainControl.py
 
 Define the following variables:
 
-- `module_path`: Path to the directory containing the Python functions.
 - `case_directory`: Path to the OpenFOAM case directory.
 
-## Script Behavior Flags
+### Parametric Sweep Definitions
+
+Define the parameters for the parametric sweep:
+
+- `potentials`: List of applied potentials to sweep (e.g., `[-0.77, -0.8, -0.85, -0.9]`).
+- `velocity`: List of inlet velocity vectors as tuples (e.g., `[(0, 0, -0.005), (0, 0, -0.01)]`).
+- `results_folder_name`: Index of the velocity component to use for naming result folders (0=x, 1=y, 2=z).
+
+### Script Behavior Flags
 
 Control the script's execution by setting the following flags:
 
@@ -37,7 +45,7 @@ In this folder are saved to default also the log files relative to the simulatio
 
 The main output directory is named based on the specified x, y, z components of the velocity vector.
 If these parameter lists are left empty, the folder name refers to the values in the "0" folder.
-In this folder is saved a txt file containing the macro results of the simulations as current density, 
+In this folder is saved a txt file containing the macro results of the simulations as current density,
 overpotential, power losses etc. directly extracted from the log files.
 
 ```
@@ -60,5 +68,5 @@ overpotential, power losses etc. directly extracted from the log files.
 │   └── ...
 ```
 
-Intermediate time folders (e.g., "1", "2", ...) are deleted after each simulation, preserving only the final 
+Intermediate time folders (e.g., "1", "2", ...) are deleted after each simulation, preserving only the final
 time step of each sweep.
