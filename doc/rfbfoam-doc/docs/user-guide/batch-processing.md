@@ -19,8 +19,17 @@ The batch processing system automates:
 
 The main entry point is `batch_run/MainControl.py`. Define the following variables:
 
-- **`module_path`**: Path to the directory containing the Python functions
 - **`case_directory`**: Path to the OpenFOAM case directory
+
+### Parametric Sweep Definitions
+
+Define the parameters for the parametric sweep:
+
+| Parameter | Description |
+|-----------|-------------|
+| `potentials` | List of applied potentials to sweep (e.g., `[-0.77, -0.8, -0.85, -0.9]`) |
+| `velocity` | List of inlet velocity vectors as tuples (e.g., `[(0, 0, -0.005), (0, 0, -0.01)]`) |
+| `results_folder_name` | Index of the velocity component to use for naming result folders (0=x, 1=y, 2=z) |
 
 ### Script Behavior Flags
 
