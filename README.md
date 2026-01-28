@@ -2,6 +2,7 @@
 
 [![OpenFOAM Version](https://img.shields.io/badge/OpenFOAM-v2206+-blue.svg)](https://openfoam.com/)
 [![License](https://img.shields.io/badge/License-GPL--3.0-green.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+[![Documentation](https://img.shields.io/badge/docs-online-blue.svg)](https://mbarzegary.github.io/RfbFoam/)
 
 RfbFoam is a specialized computational fluid dynamics (CFD) solver developed for simulating redox flow battery (RFB) systems in OpenFOAM. The solver couples momentum, mass, and charge transport phenomena to model electrochemical processes in porous electrode structures with accurate representation of Butler-Volmer kinetics and mass transfer effects.
 
@@ -160,6 +161,10 @@ RfbFoam supports selective equation solving for computational efficiency:
 - **Scale-up studies**: From lab-scale to industrial systems
 - **Parametric analysis**: Operating conditions and material properties
 - **Validation studies**: Model verification against experimental data
+
+## Documentation
+
+Comprehensive documentation is available online [here](https://mbarzegary.github.io/RfbFoam/). The documentation includes detailed installation instructions, solver theory, case setup guides, and tutorials for running simulations.
 
 ## License
 
