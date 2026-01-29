@@ -1,6 +1,6 @@
 # RfbFoam: Redox Flow Battery Solver for OpenFOAM
 
-[![OpenFOAM Version](https://img.shields.io/badge/OpenFOAM-v2206+-blue.svg)](https://openfoam.com/)
+[![OpenFOAM Version](https://img.shields.io/badge/OpenFOAM-v2406+-blue.svg)](https://openfoam.com/)
 [![License](https://img.shields.io/badge/License-GPL--3.0-green.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![Documentation](https://img.shields.io/badge/docs-online-blue.svg)](https://mbarzegary.github.io/RfbFoam/)
 
