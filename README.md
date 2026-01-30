@@ -171,7 +171,7 @@ Comprehensive documentation is available online [here](https://mbarzegary.github
 If you use RfbFoam in your research, please cite the following paper:
 
 >  M. Barzegari, M. De Waal, D. Bordignon, A. Rosinaite, B. Liu, A. Forner-Cuenca. *RfbFoam: An open-source framework for porous electrode modeling in redox flow batteries*. ChemRxiv. 2026.
-> https://doi.org/10.26434/chemrxiv.10001658
+> https://doi.org/10.26434/chemrxiv.10001658/v1
 
 ```bibtex
 @article{Barzegari2026rfbfoam,
