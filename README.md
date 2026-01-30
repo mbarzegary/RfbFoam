@@ -166,24 +166,23 @@ RfbFoam supports selective equation solving for computational efficiency:
 
 Comprehensive documentation is available online [here](https://mbarzegary.github.io/RfbFoam/). The documentation includes detailed installation instructions, solver theory, case setup guides, and tutorials for running simulations.
 
-## License
+## Publication
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+If you use RfbFoam in your research, please cite the following paper:
 
-<!-- ## Citation
+>  M. Barzegari, M. De Waal, D. Bordignon, A. Rosinaite, B. Liu, A. Forner-Cuenca. *RfbFoam: An open-source framework for porous electrode modeling in redox flow batteries*. ChemRxiv. 2026.
+> https://doi.org/10.26434/chemrxiv.10001658
 
-If you use RfbFoam in your research, please cite:
 ```bibtex
-@software{rfbfoam,
-  title={RfbFoam: Redox Flow Battery Solver for OpenFOAM},
-  author={[Author Names]},
-  year={2024},
-  url={[Repository URL]}
+@article{Barzegari2026rfbfoam,
+  author    = {Barzegari, Mojtaba and De Waal, Martin and Bordignon, Davide and Rosinaite, Adele and Liu, Baichen and Forner-Cuenca, Antoni},
+  title     = {RfbFoam: An open-source framework for porous electrode modeling in redox flow batteries},
+  year      = {2026},
+  doi       = {10.26434/chemrxiv.10001658/v1},
+  publisher = {ChemRxiv},
 }
 ```
 
-## Support
+## License
 
-For questions, bug reports, or contributions:
-- Create an issue on GitHub
-- Contact: [maintainer email] -->
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
