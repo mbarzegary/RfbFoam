@@ -48,7 +48,7 @@ RfbFoam defines two sets of OpenFOAM fields:
 | **Solved variables** | $\vec{v}$, $p$, $C_{\text{O}}$, $C_{\text{R}}$, $\Phi_{\text{s}}$, $\Phi_{\text{l}}$ |
 | **Physical properties** | $\varepsilon$, $a$, $k_{\text{m,O}}$, $k_{\text{m,R}}$, $K$, $\tau$ |
 
-Each physical property can be set independently or as a function of others (e.g., porosity). The properties in flow channels are configured for non-reactive free flow: $\varepsilon = 0.99$, $a = 0$, and $K^{-1} = \beta = 0$. This is handled by the OpenFOAM built-in tool `setExprFields`.
+Each physical property can be set independently or as a function of others (e.g., porosity). The properties in flow channels are configured for non-reactive free flow: $\varepsilon = 0.99$, $a = 0$, and $K^{-1} = \beta = 0$. This is handled by the OpenFOAM built-in tool `setExprFields`. For details on configuring uniform or spatially-varying properties (e.g., porosity gradients), see [Spatially-Variable Fields](./spatially-variable-fields).
 
 ## Cell Configurations
 

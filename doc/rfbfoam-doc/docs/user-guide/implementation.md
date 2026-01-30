@@ -25,7 +25,7 @@ Additional features:
 - Generalizing RFB geometry definition for complex and realistic cell configurations
 - Decomposing the cell overpotential into electrolyte/electrode ohmic losses and kinetic/transport losses
 - Extending the logging system (flow rates, species rates, concentrations, SoC, pressure drop, current density, overpotential)
-- Support for defining gradients in physical and microstructural properties (e.g., porosity gradient)
+- Support for defining gradients in physical and microstructural properties (e.g., porosity gradient) — see [Spatially-Variable Fields](./spatially-variable-fields)
 - Modular code structure for easier maintenance and extensibility
 
 ## Solution Algorithm
