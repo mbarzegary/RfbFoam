@@ -146,6 +146,8 @@ This should return your OpenFOAM version (e.g., "v2406").
 
 Alternatively, you can use `Allrun` and `Allclean` scripts in cases directories to run and clean the simulations.
 
+> **Note on Parallel Execution**: The example cases are configured to run in parallel using **16 CPU cores** by default. If your system has fewer cores, you must modify the `system/decomposeParDict` file before running. Change the `numberOfSubdomains` value to match your available CPU cores (e.g., `numberOfSubdomains 4;` for 4 cores). Running with more subdomains than available cores will cause performance issues or failures.
+
 ## Solver Options
 
 RfbFoam supports selective equation solving for computational efficiency:
