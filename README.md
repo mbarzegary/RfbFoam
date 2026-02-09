@@ -48,15 +48,21 @@ This solver addresses the complex multiphysics nature of redox flow batteries by
 
 ```
 RfbFoam/
-├── src/                     # Solver source code
-│   ├── RfbFoam.C           # Main solver application
-│   ├── BCs/                # Custom boundary conditions
-│   ├── equations/          # Transport equation definitions
-│   └── Make/               # Compilation settings
-├── examples/               # Example cases and tutorials
-│   ├── cases/              # Ready-to-run simulation cases
-│   └── verification-validation/  # Validation against experimental data
-└── batch_run/              # Python tools for parametric studies
+├── src/                           # Solver source code
+│   ├── RfbFoam.C                  # Main solver application
+│   ├── BCs/                       # Custom boundary conditions
+│   ├── equations/                 # Transport equation definitions
+│   └── Make/                      # Compilation settings
+├── examples/                      # Example cases and tutorials
+│   ├── cases/                     # Ready-to-run simulation cases
+│   │   ├── FTFF_Model/            # Flow-through flow field case
+│   │   └── IDFF_Model/            # Interdigitated flow field case
+│   └── verification-validation/   # Validation against experimental data
+├── batch_run/                     # Python tools for polarization curves
+├── doc/                           # Documentation source
+│   └── rfbfoam-doc/               # Docusaurus documentation website
+├── Allwmake                       # Build script
+└── Allwclean                      # Clean script
 ```
 
 ## Quick Start
